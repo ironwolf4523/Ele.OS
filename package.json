@@ -1,0 +1,24 @@
+{
+  "name": "ele.os-discordbot",
+  "version": "1.0.0",
+  "description": "a discord bot based on ele.os",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ironwolf4523/Ele.OS.git"
+  },
+  "author": "ironwolf",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ironwolf4523/Ele.OS/issues"
+  },
+  "homepage": "https://github.com/ironwolf4523/Ele.OS#readme",
+  "dependencies": {
+    "discord.js": "^11.5.1",
+    "discord.js-commando": "^0.10.0",
+    "dotenv": "^8.1.0"
+  }
+}
