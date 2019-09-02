@@ -16,7 +16,7 @@ client.on('ready', message => {
     console.log(`Logged in as ${client.user.tag}`)
     console.log('Thanks For using my Bot')
     console.log('//IronWolf\\')
-    client.user.setActivity('Change Me!', { type: 'LISTENING'});
+    client.user.setActivity('Change Me!');
 
 });
 //The Code Below Is for The Bot To Watch Chat So it's Aware What Been Typed and Respond Acordingly!
