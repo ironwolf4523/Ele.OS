@@ -46,13 +46,53 @@ client.on('message', message => {
                  if(args[3] === 'song?') {
                     const embed = new RichEmbed()
                     .setTitle('My Favourite Song is Reboot Me!')
-                    .setColor(0x33cccc)
+                    .setColor('0x33cccc')
                     .setDescription('My Song was Made by best friend Jakeneutron')
                     .setURL('https://www.youtube.com/watch?v=Ex5ZkWI76Wc&list=PLNzAbQKI5RwGvxtk3ZvkXHyT11o01yKol&index=1')
+                    .setThumbnail('https://i.ytimg.com/vi/Ex5ZkWI76Wc/hqdefault.jpg?sqp=-oaymwEZCPYBEIoBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLCrTxxgxUW4dyGhApDRyiZzOhC72Q')
                     message.channel.send(embed);
                  }
 
-            break;         
+            break;       
+            case 'play':
+                if (args[1] === 'your')
+                    if (args[2] === 'song') {
+                        if (!message.guild) return;
+                        if (message.member.voiceChannel) {
+                            message.member.voiceChannel.join()
+                                .then(connection => {
+                                    console.log('Joined a Voice Channel!')
+                                    const dispatcher = connection.playFile('audio/song01.mp3')
+                                    {
+                                        const embed = new RichEmbed()
+                                            .setTitle('Reboot Me Feat. Eleanor Forte')
+                                            .setDescription('I\'m now playing Reboot Me,')
+                                            .setFooter('Click on The Title To Go To The Youtube Video!')
+                                            .setColor('0x33cccc')
+                                            .setURL('https://www.youtube.com/watch?v=Ex5ZkWI76Wc&list=PLNzAbQKI5RwGvxtk3ZvkXHyT11o01yKol&index=1')
+                                            .setThumbnail('https://i.ytimg.com/vi/Ex5ZkWI76Wc/hqdefault.jpg?sqp=-oaymwEZCPYBEIoBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLCrTxxgxUW4dyGhApDRyiZzOhC72Q')
+                                        message.channel.send(embed);
+                                    }
+                                    dispatcher.on('end', () => {
+                                        message.member.voiceChannel.leave()
+                                        console.log('left a voice channel')
+                                    });
+                                    dispatcher.on('error', e => {
+                                        console.log(e);
+                                    });
+                                })
+                                .catch(console.log)
+
+                        }
+                        else {
+                            message.reply('Can You Join a Voice Channel?')
+                        }
+                    }
+                break;
+            case 'end': {
+                message.member.voiceChannel.leave()
+            }
+                break;  
         }
     } 
 )
